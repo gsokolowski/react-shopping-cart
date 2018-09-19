@@ -25,13 +25,24 @@ class Counter extends Component {
   render() {
     // show props of object you can read props from parent object
     console.log("props", this.props);
-
+    // return '<h1></h1>' is like React.createElement
+    // this is js expression {this.state.count}
+    // this is js expression {2+2}
+    // jsx expresssion must have only one root element
+    // <React.Fragment> make html inside not contained in <div>
     return (
       <div>
+        {/* gets children  <counter>h4<counter>*/}
+        {this.props.children}
+
         <span style={this.styles} className={this.getBadgeClasses()}>
           {this.formatCount()}
         </span>
         <button
+          // notice that you dont call handleIncrement functon you only pass reference to it (this.handleIncrement)
+          // onClick={this.handleIncrement}
+          // if you need to pass argument to a function you need to do inline arrorw function
+          // and then you can pass data to it like id:1 or product object
           onClick={() => this.handleIncrement({ id: 2 })} // im passing data to handleIncrement function, I could put there product object
           className="btn btn-secondary btn-sm"
         >
