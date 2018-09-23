@@ -24,16 +24,6 @@ class Counters extends Component {
 
     this.setState({ counters: counters }); // overrride state.counters with new counters without deleted counter
   };
-  // to reset all counters values you need to create copy of state , set each value as 0 , and overwrite Counters state
-  handleReset = () => {
-    console.log("Reset hit");
-    const counters = this.state.counters.map(counter => {
-      counter.value = 0;
-      return counter;
-    });
-    this.setState({ counters: counters }); // overrride state.counters with new counters without deleted counter
-  };
-
   // Debuging
   // Install React Developer Tools to you chrome
   // $r feature in Console
@@ -41,24 +31,14 @@ class Counters extends Component {
   render() {
     return (
       <div>
-        <button
-          onClick={this.handleReset}
-          className="btn btn-primary btn-sm m-2"
-        >
-          Reset
-        </button>
-
         {/* Generate list of Counters (5 of them). Take array counters from state and go  each component Counter and make a list */}
         {this.state.counters.map(counter => (
           <Counter
             key={counter.id} // it is a key not a probs.key
             onDelete={() => this.handleDelete(counter.id)} //populate props.onDelete function - here you receive event "delete" from counter and call handleDelete
-            // instead of seperate values like id, value and selsected
-            // id={counter.id} // populate props.id in this counter by using counter.id
-            // value={counter.value} // populate props.value in this counter by using counter.value
-            // selected={true} // populate props.selected in this counter by using counter.selected
-            // just send full cunter object
-            counter={counter} // full object passed so you have counter.id counter.value inside
+            id={counter.id} // populate props.id in this counter by using counter.id
+            value={counter.value} // populate props.value in this counter by using counter.value
+            selected={true} // populate props.selected in this counter by using counter.selected
           />
           /* component, also set key property to id of seperate counter */
           /* value and selected are values to pass to other componnet, 

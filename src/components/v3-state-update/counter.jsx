@@ -5,7 +5,7 @@ import React, { Component } from "react";
 class Counter extends Component {
   // object that includes any data that this component needs
   state = {
-    value: this.props.counter.value // set state based on passed counter.value from counters
+    value: this.props.value
   };
 
   // use arrow finctions inseatd of bindimg this in contructor().
@@ -26,13 +26,13 @@ class Counter extends Component {
           {this.formatCount()}
         </span>
         <button
-          onClick={() => this.handleIncrement(this.props.counter.id)} // im passing data to handleIncrement function, I could put there product object
+          onClick={() => this.handleIncrement(this.props.id)} // im passing data to handleIncrement function, I could put there product object
           className="btn btn-secondary btn-sm"
         >
           Increment
         </button>
         <button // onClick {this.props.onDelete}  this is child component (counter) that is reising this event to parent component (counters) , and parent is handling it
-          onClick={() => this.props.onDelete(this.props.counter.id)} // Im calling props.onDelete function which is set in counters.jsx onDelete={this.handleDelete} and onDelete calls this.handleDelete in counters.jsx
+          onClick={() => this.props.onDelete(this.props.id)} // Im calling onDelete which is set in counters.jsx onDelete={this.handleDelete} and onDelete calls this.handleDelete in counters.jsx
           className="btn btn-danger btn-sm m-2"
         >
           Delete
