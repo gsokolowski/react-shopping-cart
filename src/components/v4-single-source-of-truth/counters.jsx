@@ -15,7 +15,7 @@ class Counters extends Component {
   /*****
    *
    *
-   * Stopped on 2:00:39 Lifting the State Up
+   * Stopped on 1:43:57 Single Source of Truth
    *
    *
    */
