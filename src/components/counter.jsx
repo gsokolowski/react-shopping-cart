@@ -3,24 +3,28 @@ import React, { Component } from "react";
 
 // cc<tab>
 class Counter extends Component {
-  // object that includes any data that this component needs
-  // remove local set of state - this will be controlled component
-  // state = {
-  //   value: this.props.counter.value // set state based on passed counter.value from counters
-  // };
+  // updating Phase
+  // Livecircle hook - componentDidUpdate
+  componentDidUpdate(prevProps, prevState) {
+    console.log("counter - Rendered");
+    console.log("prevProps", prevProps);
+    console.log("prevState", prevState);
 
-  // use arrow finctions inseatd of bindimg this in contructor().
-  // no local state so this method need to be removed aswell
-  // handleIncrement = productId => {
-  //   console.log("Increment Clicked", this);
-  //   console.log("Product Id", productId);
-  //   // updating state
-  //   this.setState({ value: this.props.counter.value + 1 }); // increment value of this actual counter state this.counter state.value = this.state.value + 1
-  // };
+    // and here you can decide if you would like to make another Ajax call to server or not
+    if (prevProps.counter.value != this.props.counter.value) {
+      // e.g make Ajax call to server or not
+    }
+  }
 
+  // Livecircle hook - componentWillUnmount - this is called just before component is removed from the dom
+  componentWillUnmount() {
+    console.log("counter - Unmount");
+  }
   render() {
     // show props of object you can read props from parent object
-    console.log("props", this.props);
+    //console.log("props", this.props);
+
+    console.log("counter - Rendered");
 
     return (
       <div>
@@ -66,13 +70,3 @@ class Counter extends Component {
 }
 
 export default Counter;
-
-/**
- * React Topics
- 
- * Pass Data
- * Raise and Handle Events
- * Multiply Components in Sync
- * Functional Components
- * Lifcycle hooks
- */
